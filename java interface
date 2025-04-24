@@ -1,0 +1,33 @@
+// Define an interface
+interface Bank {
+    void getAccountDetails();  // Method to display account details
+}
+
+// Implement the interface
+class Account implements Bank {
+    String bankName;
+    long accountNumber;
+
+    // Constructor
+    public Account(String bankName, long accountNumber) {
+        this.bankName = bankName;
+        this.accountNumber = accountNumber;
+    }
+
+    // Implement the method from the interface
+    public void getAccountDetails() {
+        System.out.println("Bank Name: " + bankName);
+        System.out.println("Account Number: " + accountNumber);
+    }
+}
+
+// Main class
+public class Main {
+    public static void main(String[] args) {
+        // Create an Account object
+        Account acc = new Account("Bank of Baroda", 9876543210L);
+
+        // Call the method
+        acc.getAccountDetails();
+    }
+}
