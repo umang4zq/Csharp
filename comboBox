@@ -1,0 +1,67 @@
+using System;//comboBox,textBox1,textBox2,button1
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace WindowsFormsApp5Combobox
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+            comboBox1.Items.Add("BCA");
+            comboBox1.Items.Add("BBA");
+            comboBox1.Items.Add("BCom");
+
+            comboBox1.SelectedIndex = -1;
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {   
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+                        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\source\repos\WindowsFormsApp5Combobox\WindowsFormsApp5Combobox\Database1.mdf;Integrated Security=True");
+
+            con.Open();
+           SqlCommand cmd = new SqlCommand("INSERT INTO StudentTabel (Id, Student_id, Student_name) VALUES (" + textBox1.Text + " , ' " + textBox2.Text + " )", con);
+
+            int row = cmd.ExecuteNonQuery();
+           if (row > 0)
+           {
+
+               MessageBox.Show("record inserted");
+           }
+           else
+           {
+               MessageBox.Show("record  not inserted");
+
+           }
+           con.Close();
+        }
+    }
+}
